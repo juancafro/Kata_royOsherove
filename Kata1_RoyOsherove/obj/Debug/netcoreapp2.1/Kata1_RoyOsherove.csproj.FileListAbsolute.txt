@@ -1,0 +1,11 @@
+c:\users\juan\source\repos\Kata1_RoyOsherove\Kata1_RoyOsherove\bin\Debug\netcoreapp2.1\Kata1_RoyOsherove.deps.json
+c:\users\juan\source\repos\Kata1_RoyOsherove\Kata1_RoyOsherove\bin\Debug\netcoreapp2.1\Kata1_RoyOsherove.runtimeconfig.json
+c:\users\juan\source\repos\Kata1_RoyOsherove\Kata1_RoyOsherove\bin\Debug\netcoreapp2.1\Kata1_RoyOsherove.runtimeconfig.dev.json
+c:\users\juan\source\repos\Kata1_RoyOsherove\Kata1_RoyOsherove\bin\Debug\netcoreapp2.1\Kata1_RoyOsherove.dll
+c:\users\juan\source\repos\Kata1_RoyOsherove\Kata1_RoyOsherove\bin\Debug\netcoreapp2.1\Kata1_RoyOsherove.pdb
+c:\users\juan\source\repos\Kata1_RoyOsherove\Kata1_RoyOsherove\obj\Debug\netcoreapp2.1\Kata1_RoyOsherove.csprojAssemblyReference.cache
+c:\users\juan\source\repos\Kata1_RoyOsherove\Kata1_RoyOsherove\obj\Debug\netcoreapp2.1\Kata1_RoyOsherove.csproj.CoreCompileInputs.cache
+c:\users\juan\source\repos\Kata1_RoyOsherove\Kata1_RoyOsherove\obj\Debug\netcoreapp2.1\Kata1_RoyOsherove.AssemblyInfoInputs.cache
+c:\users\juan\source\repos\Kata1_RoyOsherove\Kata1_RoyOsherove\obj\Debug\netcoreapp2.1\Kata1_RoyOsherove.AssemblyInfo.cs
+c:\users\juan\source\repos\Kata1_RoyOsherove\Kata1_RoyOsherove\obj\Debug\netcoreapp2.1\Kata1_RoyOsherove.dll
+c:\users\juan\source\repos\Kata1_RoyOsherove\Kata1_RoyOsherove\obj\Debug\netcoreapp2.1\Kata1_RoyOsherove.pdb

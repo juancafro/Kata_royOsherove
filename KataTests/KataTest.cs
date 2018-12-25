@@ -34,7 +34,7 @@ namespace KataTests
         }
 
         [Theory]
-        [InlineData("2,",6)]
+        [InlineData("2,&",6)]
         [InlineData("3,*", 9)]
         public void ShouldThrowsAnExceptionOnBadString(string numbers, int result)
         {
@@ -42,7 +42,23 @@ namespace KataTests
             var ex = Assert.Throws<Exception>(() => stringCalculator.Add(numbers));
         }
 
+        [Theory]
+        [InlineData("2,10,,13", 25)]
+        [InlineData(",4,,6,8", 18)]
+        public void ShouldTakeEmptyAsZero(string numbers, int result)
+        {
+            StringCalculator stringCalculator = new StringCalculator();
+            Assert.Equal(result, stringCalculator.Add(numbers));
+        }
 
+        [Theory]
+        [InlineData("2,10,25,13", 50)]
+        [InlineData("3,4,1,6,8", 22)]
+        public void ShouldAddAUnknowNumberOfNumbers(string numbers, int result)
+        {
+            StringCalculator stringCalculator = new StringCalculator();
+            Assert.Equal(result,stringCalculator.Add(numbers));
+        }
 
     }
 }

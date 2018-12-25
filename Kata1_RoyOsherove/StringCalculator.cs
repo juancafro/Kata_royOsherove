@@ -7,17 +7,18 @@ namespace Kata1_RoyOsherove
     public class StringCalculator
     {
         public int Add(string numbers) {
+            if (string.IsNullOrWhiteSpace(numbers))
+            {
+                return 0;
+            }
             try
             {
-                if (string.IsNullOrWhiteSpace(numbers))
-                {
-                    return 0;
+                int acumulator = 0;
+                string[] numbersstr = numbers.Split(',',StringSplitOptions.RemoveEmptyEntries);
+                for (int i = 0; i < numbersstr.Length; i++) {
+                    acumulator += int.Parse(numbersstr[i]);
                 }
-                string[] numbersstr = numbers.Split(",");
-                if (numbersstr.Length == 1)
-                    return int.Parse(numbersstr[0]);
-                else
-                    return int.Parse(numbersstr[0]) + int.Parse(numbersstr[1]);
+                return acumulator;
             }
             catch (FormatException ex) {
                 throw new Exception("some of the chars in "+numbers+" aren't numbers" );

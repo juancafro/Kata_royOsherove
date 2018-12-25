@@ -24,5 +24,25 @@ namespace KataTests
             Assert.Equal(int.Parse(numbers), stringCalculator.Add(numbers));
         }
 
+        [Theory]
+        [InlineData("2,4",6)]
+        [InlineData("3,6",9)]
+        public void ShouldReturnTheResultWithTwoNumberString(string numbers,int result)
+        {
+            StringCalculator stringCalculator = new StringCalculator();
+            Assert.Equal(result, stringCalculator.Add(numbers));
+        }
+
+        [Theory]
+        [InlineData("2,",6)]
+        [InlineData("3,*", 9)]
+        public void ShouldThrowsAnExceptionOnBadString(string numbers, int result)
+        {
+            StringCalculator stringCalculator = new StringCalculator();
+            var ex = Assert.Throws<Exception>(() => stringCalculator.Add(numbers));
+        }
+
+
+
     }
 }

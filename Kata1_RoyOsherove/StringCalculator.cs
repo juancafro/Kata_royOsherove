@@ -10,7 +10,7 @@ namespace Kata1_RoyOsherove
             if (string.IsNullOrWhiteSpace(numbers)) {
                 return 0;
             }
-            return 0;
+            return int.Parse(numbers);
         }
     }
 }

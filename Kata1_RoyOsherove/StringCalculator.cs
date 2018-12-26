@@ -14,8 +14,31 @@ namespace Kata1_RoyOsherove
             try
             {
                 int acumulator = 0;
-                string[] numbersstr = numbers.Split(',',StringSplitOptions.RemoveEmptyEntries);
+                char[] defaultdelimiters = { ',', '\n' };
+                string[] numbersstr;  
+                if (numbers.StartsWith("//")) {
+                    string[] entryParts = numbers.Split('\n');
+                    if (entryParts.Length > 1)
+                    {
+                        if (!string.IsNullOrEmpty(entryParts[0]))
+                        {
+                            numbersstr = entryParts[1].Split(entryParts[0].TrimStart('/'));
+                        }
+                        else
+                        {
+                            numbersstr = entryParts[1].Split(defaultdelimiters);
+                        }
+                    }
+                    else
+                    {
+                        numbersstr = numbers.Split(defaultdelimiters);
+                    }
+                }
+                else {
+                    numbersstr = numbers.Split(defaultdelimiters);
+                }
                 for (int i = 0; i < numbersstr.Length; i++) {
+
                     acumulator += int.Parse(numbersstr[i]);
                 }
                 return acumulator;

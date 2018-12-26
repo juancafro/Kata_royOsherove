@@ -38,8 +38,11 @@ namespace Kata1_RoyOsherove
                     numbersstr = numbers.Split(defaultdelimiters);
                 }
                 for (int i = 0; i < numbersstr.Length; i++) {
-
-                    acumulator += int.Parse(numbersstr[i]);
+                    int number = int.Parse(numbersstr[i]);
+                    if (number < 0) {
+                        throw new InvalidOperationException("can't operate the array: {" + numbers + "} contains negative numbers")
+                    }
+                    acumulator += number;
                 }
                 return acumulator;
             }

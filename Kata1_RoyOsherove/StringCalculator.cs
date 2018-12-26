@@ -40,7 +40,7 @@ namespace Kata1_RoyOsherove
                 for (int i = 0; i < numbersstr.Length; i++) {
                     int number = int.Parse(numbersstr[i]);
                     if (number < 0) {
-                        throw new InvalidOperationException("can't operate the array: {" + numbers + "} contains negative numbers")
+                        throw new InvalidOperationException("can't operate the array: {" + numbers + "} contains negative numbers");
                     }
                     acumulator += number;
                 }

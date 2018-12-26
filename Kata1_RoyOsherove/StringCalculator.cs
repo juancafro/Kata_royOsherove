@@ -22,7 +22,9 @@ namespace Kata1_RoyOsherove
                     {
                         if (!string.IsNullOrEmpty(entryParts[0]))
                         {
-                            numbersstr = entryParts[1].Split(entryParts[0].TrimStart('/'));
+                            string delimitier = entryParts[0].TrimStart('/');
+                            delimitier = delimitier.Trim('[', ']');
+                            numbersstr = entryParts[1].Split(delimitier);
                         }
                         else
                         {
@@ -42,7 +44,7 @@ namespace Kata1_RoyOsherove
                     if (number < 0) 
                         throw new InvalidOperationException("can't operate the array: {" + numbers + "} contains negative numbers");
                     if (number < 1000) 
-                        acumulator += number;
+                         acumulator += number;
                 }
                 return acumulator;
             }

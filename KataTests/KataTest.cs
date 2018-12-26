@@ -69,5 +69,14 @@ namespace KataTests
             Assert.Equal(result, stringCalculator.Add(numbers));
         }
 
+        [Theory]
+        [InlineData("//[****]\n1000****2****10****25****13", 50)]
+        public void ShouldSupportDelimitiersWithDifferentLength(string numbers, int result)
+        {
+            StringCalculator stringCalculator = new StringCalculator();
+            Assert.Equal(result, stringCalculator.Add(numbers));
+        }
+
+
     }
 }

@@ -22,9 +22,12 @@ namespace Kata1_RoyOsherove
                     {
                         if (!string.IsNullOrEmpty(entryParts[0]))
                         {
-                            string delimitier = entryParts[0].TrimStart('/');
-                            delimitier = delimitier.Trim('[', ']');
-                            numbersstr = entryParts[1].Split(delimitier);
+                            string[] delimitier = entryParts[0].TrimStart('/').Split("][");
+                            List<string> delimitiersList = new List<string>();
+                            foreach (string item in delimitier) {
+                                delimitiersList.Add(item.Trim('[', ']'));
+                            }
+                            numbersstr = entryParts[1].Split(delimitiersList.ToArray(),StringSplitOptions.None);
                         }
                         else
                         {

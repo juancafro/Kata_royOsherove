@@ -61,5 +61,13 @@ namespace KataTests
             Assert.Equal(result, stringCalculator.Add(numbers));
         }
 
+        [Theory]
+        [InlineData("//;\n1000;2;10;25;13", 50)]
+        [InlineData("1000\n4,1\n5\n8", 18)]
+        public void ShouldntAddGreaterNumbersThan1000(string numbers, int result) {
+            StringCalculator stringCalculator = new StringCalculator();
+            Assert.Equal(result, stringCalculator.Add(numbers));
+        }
+
     }
 }

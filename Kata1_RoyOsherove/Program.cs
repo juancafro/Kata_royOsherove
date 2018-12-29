@@ -2,11 +2,19 @@
 
 namespace Kata1_RoyOsherove
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        
+        public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            IInput input = new ConsoleUserInput();
+            ILogger logger = new ConsoleLogger();
+            IWebService webService = new ConsoleWebService();
+            IStringCalculator stringCalculator = new StringCalculator(logger,webService);
+
+            App app = new App(input, logger, stringCalculator);
+            app.run();
+
         }
     }
 }

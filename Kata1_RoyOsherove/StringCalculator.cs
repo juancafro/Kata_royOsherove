@@ -4,56 +4,80 @@ using System.Text;
 
 namespace Kata1_RoyOsherove
 {
-    public class StringCalculator
+    public class StringCalculator : IStringCalculator
     {
-        public int Add(string numbers) {
+        public ILogger logger;
+        public IWebService webService;
+        public StringCalculator(ILogger logger, IWebService webService)
+        {
+            this.logger = logger;
+            this.webService = webService;
+        }
+
+        public int Add(string numbers)
+        {
             if (string.IsNullOrWhiteSpace(numbers))
             {
                 return 0;
             }
-            try
+            int acumulator = 0;
+            char[] defaultdelimiters = { ',', '\n' };
+            string[] numbersstr;
+            if (numbers.StartsWith("//"))
             {
-                int acumulator = 0;
-                char[] defaultdelimiters = { ',', '\n' };
-                string[] numbersstr;  
-                if (numbers.StartsWith("//")) {
-                    string[] entryParts = numbers.Split('\n');
-                    if (entryParts.Length > 1)
+                string[] entryParts = numbers.Split('\n');
+                if (entryParts.Length > 1)
+                {
+                    if (!string.IsNullOrEmpty(entryParts[0]))
                     {
-                        if (!string.IsNullOrEmpty(entryParts[0]))
+                        string[] delimitier = entryParts[0].TrimStart('/').Split("][");
+                        List<string> delimitiersList = new List<string>();
+                        foreach (string item in delimitier)
                         {
-                            string[] delimitier = entryParts[0].TrimStart('/').Split("][");
-                            List<string> delimitiersList = new List<string>();
-                            foreach (string item in delimitier) {
-                                delimitiersList.Add(item.Trim('[', ']'));
-                            }
-                            numbersstr = entryParts[1].Split(delimitiersList.ToArray(),StringSplitOptions.None);
+                            delimitiersList.Add(item.Trim('[', ']'));
                         }
-                        else
-                        {
-                            numbersstr = entryParts[1].Split(defaultdelimiters);
-                        }
+                        numbersstr = entryParts[1].Split(delimitiersList.ToArray(), StringSplitOptions.None);
                     }
                     else
                     {
-                        numbersstr = numbers.Split(defaultdelimiters);
+                        numbersstr = entryParts[1].Split(defaultdelimiters);
                     }
                 }
-                else {
+                else
+                {
                     numbersstr = numbers.Split(defaultdelimiters);
                 }
-                for (int i = 0; i < numbersstr.Length; i++) {
-                    int number = int.Parse(numbersstr[i]);
-                    if (number < 0) 
-                        throw new InvalidOperationException("can't operate the array: {" + numbers + "} contains negative numbers");
-                    if (number < 1000) 
-                         acumulator += number;
+            }
+            else
+            {
+                numbersstr = numbers.Split(defaultdelimiters);
+            }
+            for (int i = 0; i < numbersstr.Length; i++)
+            {
+                int number;
+                try
+                {
+                    number = int.Parse(numbersstr[i]);
                 }
-                return acumulator;
+                catch (FormatException ex)
+                {
+                    throw new Exception("some of the chars in " + numbers + " aren't numbers");
+                }
+                if (number < 0)
+                    throw new InvalidOperationException("can't operate the array: {" + numbers + "} contains negative numbers");
+                if (number < 1000)
+                    acumulator += number;
             }
-            catch (FormatException ex) {
-                throw new Exception("some of the chars in "+numbers+" aren't numbers" );
+            try
+            {
+                logger.Write("The result is " + acumulator);
             }
+            catch (Exception ex) {
+                webService.Notify(ex.Message);
+            }
+            return acumulator;
+
+
         }
     }
 }
